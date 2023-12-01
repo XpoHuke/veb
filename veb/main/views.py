@@ -27,19 +27,3 @@ def create(request):
         'error': error
     }
     return render(request, 'create.html', context)
-
-def sub(request):
-    error = ''
-    if request.method == 'POST':
-        form = TaskForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-        else:
-            error = 'Не верно введен текст'
-    form = BetForm
-    context = {
-        'form': form,
-        'error': error
-    }
-    return render(request, 'sub.html', context)
